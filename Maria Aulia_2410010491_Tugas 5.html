@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validasi Tahun</title>
+    <style>
+        td { border:1px solid #000; padding:6px 12px; font-size:18px; }
+    </style>
+</head>
+<body>
+
+<script>
+let awal = prompt("Masukkan tahun awal:");
+let akhir = prompt("Masukkan tahun akhir:");
+
+// Validasi input
+if(isNaN(awal) || isNaN(akhir) || awal=="" || akhir==""){
+    document.write("<h3>Input tidak valid!</h3>");
+} else {
+    awal = Number(awal);
+    akhir = Number(akhir);
+
+    document.write("<table>");
+
+    for(let i=awal; i<=akhir; i++){
+        let kategori, warna;
+
+        if( (i%4==0 && i%100!=0) || (i%400==0) ){
+            kategori="Kabisat"; warna="#0A5F2D";
+        } else if(i%2==0){
+            kategori="Genap"; warna="yellow";
+        } else {
+            kategori="Ganjil"; warna="pink";
+        }
+
+        document.write(`
+            <tr>
+                <td style='background:yellow;'>${i}</td>
+                <td style='background:${warna};'>${kategori}</td>
+            </tr>
+        `);
+    }
+
+    document.write("</table>");
+}
+</script>
+
+</body>
+</html>
